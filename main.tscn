@@ -1,0 +1,185 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/cop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/pusherSquad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://drawing.gd" type="Script" id=3]
+[ext_resource path="res://main.gd" type="Script" id=4]
+[ext_resource path="res://GFX/person.png" type="Texture" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 589.712, 536.367, 413, 506, 674, 247, 832, 286, 942, 512, 199, 176, 372, 258, 157, 446, -1, 232, 81, 8, 142, -24, 426, 80, 738, 130, 593.489, 9.36591, 818, -49, 909, 29, 138.467, -242.036, 290.694, -256.167, 492.412, -256.167, 560.41, -256.002 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 5, 8, 9, 10, 11 ), PoolIntArray( 12, 3, 2, 11, 13 ), PoolIntArray( 14, 15, 12, 13 ), PoolIntArray( 13, 11, 10, 16, 17, 18, 19 ) ]
+outlines = [ PoolVector2Array( 81, 8, -1, 232, 157, 446, 372, 258, 199, 176, 426, 80, 674, 247, 413, 506, 589.712, 536.367, 942, 512, 832, 286, 738, 130, 909, 29, 818, -49, 593.489, 9.36591, 560.41, -256.002, 492.412, -256.167, 290.694, -256.167, 138.467, -242.036, 142, -24 ) ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "asdf"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 19.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 320.781, -231.058 ), Vector2( 314.9, -134.761 ) ]
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 404.514, 50.8773 )
+current = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 818, 379 )
+
+[node name="cop1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 187.392, 311.458 )
+
+[node name="cop2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 143.392, 308.458 )
+
+[node name="cop3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 90.3916, 306.458 )
+
+[node name="cop4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 794.082, -16.5683 )
+
+[node name="cop5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 796.538, 19.036 )
+
+[node name="cop6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 790.399, 70.6011 )
+
+[node name="cop7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 572.893, 480.796 )
+
+[node name="cop8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 630.596, 467.291 )
+
+[node name="cop9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 705.963, 480.715 )
+
+[node name="cop10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 731.288, 270.329 )
+
+[node name="cop11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 731.288, 223.576 )
+
+[node name="cop12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 690.379, 266.433 )
+
+[node name="cop13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 688.431, 229.42 )
+
+[node name="cop14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 774.144, 229.42 )
+
+[node name="cop15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 778.04, 270.329 )
+
+[node name="cop16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 785.832, 322.925 )
+
+[node name="cop17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 729.339, 315.133 )
+
+[node name="cop18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 688.431, 320.977 )
+
+[node name="pusherSquad1" parent="." instance=ExtResource( 2 )]
+
+[node name="pusherSquad2" parent="." instance=ExtResource( 2 )]
+unitRange = [ 4, 6 ]
+
+[node name="pusherSquad3" parent="." instance=ExtResource( 2 )]
+unitRange = [ 7, 9 ]
+
+[node name="pusherSquad4" parent="." instance=ExtResource( 2 )]
+unitRange = [ 10, 18 ]
+
+[node name="drawing" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="inputcooldown" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+
+[node name="person" type="Sprite" parent="."]
+visible = false
+position = Vector2( 320.781, -231.058 )
+rotation = 3.1606
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 5 )
+
+[node name="person2" type="Sprite" parent="person"]
+position = Vector2( -1509.46, -92.3584 )
+texture = ExtResource( 5 )
+
+[node name="person3" type="Sprite" parent="person"]
+position = Vector2( -3120.11, -876.118 )
+texture = ExtResource( 5 )
+
+[node name="person4" type="Sprite" parent="person"]
+position = Vector2( -260.099, -1524.77 )
+texture = ExtResource( 5 )
+
+[node name="person5" type="Sprite" parent="person"]
+position = Vector2( -1524.82, -1478.72 )
+texture = ExtResource( 5 )
+
+[node name="person6" type="Sprite" parent="person"]
+position = Vector2( -3013.41, -2209.77 )
+texture = ExtResource( 5 )
+
+[node name="person7" type="Sprite" parent="person"]
+position = Vector2( -374.669, -2920.25 )
+texture = ExtResource( 5 )
+
+[node name="person8" type="Sprite" parent="person"]
+position = Vector2( -1354.61, -2945.64 )
+texture = ExtResource( 5 )
+
+[node name="person9" type="Sprite" parent="person"]
+position = Vector2( 842.362, -2580.22 )
+texture = ExtResource( 5 )
+
+[node name="person10" type="Sprite" parent="person"]
+position = Vector2( -2832.05, 331.591 )
+texture = ExtResource( 5 )
+
+[node name="person11" type="Sprite" parent="person"]
+position = Vector2( -672.947, 898.557 )
+texture = ExtResource( 5 )
+
+[node name="person12" type="Sprite" parent="person"]
+position = Vector2( -1766.62, 1648.97 )
+texture = ExtResource( 5 )
+
+[node name="person13" type="Sprite" parent="person"]
+position = Vector2( -658.463, 2371.03 )
+texture = ExtResource( 5 )
+
+[node name="person14" type="Sprite" parent="person"]
+position = Vector2( -3296.86, 2177.98 )
+texture = ExtResource( 5 )
+
+[node name="person15" type="Sprite" parent="person"]
+position = Vector2( -1957.81, 2963.21 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="person"]
+autoplay = "asdf"
+anims/asdf = SubResource( 2 )
+
+[connection signal="timeout" from="inputcooldown" to="." method="_on_inputcooldown_timeout"]
